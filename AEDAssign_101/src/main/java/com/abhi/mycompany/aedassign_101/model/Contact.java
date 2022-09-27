@@ -2,25 +2,25 @@ package com.abhi.mycompany.aedassign_101.model;
 
 public class Contact {
 	
-	private String phoneNumberStr;
+	private Long phoneNumberStr;
 	private String emailStr;
 
 	public Contact(){
 	}
 
-	public Contact(String phoneNumberStr, String emailStr) {
+	public Contact(Long phoneNumberStr, String emailStr) {
 		super();
 		this.phoneNumberStr = phoneNumberStr;
 		this.emailStr = emailStr;
 	}
 
 
-	public String getPhoneNumberStr() {
+	public Long getPhoneNumberStr() {
 		return phoneNumberStr;
 	}
 
 
-	public void setPhoneNumberStr(String phoneNumberStr) {
+	public void setPhoneNumberStr(Long phoneNumberStr) {
 		this.phoneNumberStr = phoneNumberStr;
 	}
 

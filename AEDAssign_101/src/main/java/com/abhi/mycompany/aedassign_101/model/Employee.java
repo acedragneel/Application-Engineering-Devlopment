@@ -1,6 +1,6 @@
 package com.abhi.mycompany.aedassign_101.model;
 
-import java.util.Date;
+import java.text.DateFormat;
 
 public class Employee {
 	
@@ -8,7 +8,7 @@ public class Employee {
 	private int employeeId;
 	private int age;
 	private String genderStr;
-	private Date startDate;
+	private DateFormat startDate;
 	private String levelStr;
 	private String teamInfoStr;
 	private String positionTitleStr;
@@ -19,7 +19,7 @@ public class Employee {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Employee(String nameStr, int employeeId, int age, String genderStr, Date startDate, String levelStr,
+	public Employee(String nameStr, int employeeId, int age, String genderStr, DateFormat startDate, String levelStr,
 			String teamInfoStr, String positionTitleStr) {
 		super();
 		this.nameStr = nameStr;
@@ -64,11 +64,11 @@ public class Employee {
 		this.genderStr = genderStr;
 	}
 
-	public Date getStartDate() {
+	public DateFormat getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(Date startDate) {
+	public void setStartDate(DateFormat startDate) {
 		this.startDate = startDate;
 	}
 
