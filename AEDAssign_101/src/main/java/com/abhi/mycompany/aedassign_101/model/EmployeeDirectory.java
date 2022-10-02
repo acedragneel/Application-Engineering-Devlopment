@@ -51,4 +51,16 @@ public class EmployeeDirectory {
               }
         }
     }
+    
+        public Employee getEmployee(Employee employee) {
+                
+        Employee employeeOther = null;
+        
+        for(Employee emp : directory){
+            if(emp.equals(employee))
+                employeeOther =  emp;
+        }
+                       
+         return employeeOther;
+    }
 }
