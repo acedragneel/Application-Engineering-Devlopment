@@ -10,9 +10,13 @@ import com.abhi.mycompany.aedassign_101.model.Contact;
 import com.abhi.mycompany.aedassign_101.model.Employee;
 import java.awt.Image;
 import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.RowFilter;
@@ -28,6 +32,9 @@ import javax.swing.table.TableRowSorter;
 public class ViewJpanel extends javax.swing.JPanel {
    
     /** Creates new form ViewJpanel */
+    
+    private boolean invalidEmployee = false;
+    
     public ViewJpanel() {
         initComponents();
                
@@ -77,6 +84,15 @@ public class ViewJpanel extends javax.swing.JPanel {
         jButtonUpdate = new javax.swing.JButton();
         tfSearch = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        vErrName = new javax.swing.JLabel();
+        vErrGender = new javax.swing.JLabel();
+        vErrEmpId = new javax.swing.JLabel();
+        vErrAge = new javax.swing.JLabel();
+        vErrGender1 = new javax.swing.JLabel();
+        vErrStartDate = new javax.swing.JLabel();
+        vErrLevel = new javax.swing.JLabel();
+        vErrPhoneNumber = new javax.swing.JLabel();
+        vErrEmail = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 153, 204));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -153,34 +169,65 @@ public class ViewJpanel extends javax.swing.JPanel {
         });
 
         vPhoneNumber.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        vPhoneNumber.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                vPhoneNumberKeyReleased(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jLabel11.setText("Email Address:");
 
         vEmail.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        vEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                vEmailKeyReleased(evt);
+            }
+        });
 
         jLabel12.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jLabel12.setText("Image:");
 
         vImage.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        vImage.setEnabled(false);
 
         vStartDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM))));
         vStartDate.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        vStartDate.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                vStartDateKeyReleased(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jLabel2.setText("Name:");
 
         vName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        vName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                vNameKeyReleased(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jLabel3.setText("Employee Id:");
 
         vEmpId.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        vEmpId.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                vEmpIdKeyReleased(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jLabel4.setText("Age:");
 
         vAge.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        vAge.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                vAgeKeyReleased(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jLabel5.setText("Gender:");
@@ -205,8 +252,18 @@ public class ViewJpanel extends javax.swing.JPanel {
         jLabel13.setText("Team Info:");
 
         vGender.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        vGender.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                vGenderKeyReleased(evt);
+            }
+        });
 
         vLevel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        vLevel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                vLevelKeyReleased(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(153, 153, 153));
         jButton1.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
@@ -235,6 +292,33 @@ public class ViewJpanel extends javax.swing.JPanel {
 
         jLabel8.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jLabel8.setText("Search");
+
+        vErrName.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        vErrName.setForeground(new java.awt.Color(255, 0, 0));
+
+        vErrGender.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        vErrGender.setForeground(new java.awt.Color(255, 0, 0));
+
+        vErrEmpId.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        vErrEmpId.setForeground(new java.awt.Color(255, 0, 0));
+
+        vErrAge.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        vErrAge.setForeground(new java.awt.Color(255, 0, 0));
+
+        vErrGender1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        vErrGender1.setForeground(new java.awt.Color(255, 0, 0));
+
+        vErrStartDate.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        vErrStartDate.setForeground(new java.awt.Color(255, 0, 0));
+
+        vErrLevel.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        vErrLevel.setForeground(new java.awt.Color(255, 0, 0));
+
+        vErrPhoneNumber.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        vErrPhoneNumber.setForeground(new java.awt.Color(255, 0, 0));
+
+        vErrEmail.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        vErrEmail.setForeground(new java.awt.Color(255, 0, 0));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -268,22 +352,43 @@ public class ViewJpanel extends javax.swing.JPanel {
                     .addComponent(vTeamInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(vGender, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(vLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(vErrGender1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(vErrGender, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                                    .addComponent(vErrEmpId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(vErrName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(505, 505, 505)
+                                .addGap(9, 9, 9)
                                 .addComponent(jButtonView)
                                 .addGap(57, 57, 57)
                                 .addComponent(jButtonDelete))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(239, 239, 239)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(vErrLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(vErrStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(vErrAge, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
                                 .addComponent(vPhotoIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(vErrPhoneNumber, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(vErrEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -320,27 +425,36 @@ public class ViewJpanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
-                            .addComponent(vName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(vName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(vErrName, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(vEmpId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel3)
+                            .addComponent(vErrEmpId, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(9, 9, 9)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(vAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
+                            .addComponent(jLabel4)
+                            .addComponent(vErrAge, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(vGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(vGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(vErrGender, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(vStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(vStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel6)
+                                .addComponent(vErrStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(vErrGender1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(vLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel7)
+                                .addComponent(vLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(vErrLevel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(vPositionTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -358,14 +472,16 @@ public class ViewJpanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(vPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
+                    .addComponent(jLabel10)
+                    .addComponent(vErrPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(vEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11))
+                    .addComponent(jLabel11)
+                    .addComponent(vErrEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonUpdate)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -456,24 +572,29 @@ public class ViewJpanel extends javax.swing.JPanel {
 
     private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
         // TODO add your handling code here:
-        
-        int selectedIndexRow = vEmpDetails.getSelectedRow();
-        
-        if(selectedIndexRow<0){
-            JOptionPane.showMessageDialog(this, "Please Select the row to be Viwed and then Update it");
-            return;
+        if(!invalidEmployee)
+        {        
+            int selectedIndexRow = vEmpDetails.getSelectedRow();
+
+            if(selectedIndexRow<0){
+                JOptionPane.showMessageDialog(this, "Please Select the row to Update it");
+                return;
+            }
+
+            DefaultTableModel model  = (DefaultTableModel)vEmpDetails.getModel();
+
+            Employee selectedEmployee = getData(model,selectedIndexRow);
+
+            Employee employeeFromList = EmployeeForm.employeeDirectory.getEmployee(selectedEmployee);
+
+            setData(employeeFromList);
+
+            populateTable();
+
+            JOptionPane.showMessageDialog(this, "Updated a Employee");
+        }else{
+            JOptionPane.showMessageDialog(this, "Invlaid Data!!! Employee Update is Not Saved");
         }
-        
-        DefaultTableModel model  = (DefaultTableModel)vEmpDetails.getModel();
-        
-        Employee selectedEmployee = getData(model,selectedIndexRow);
-             
-        Employee employeeFromList = EmployeeForm.employeeDirectory.getEmployee(selectedEmployee);
-        
-        setData(employeeFromList);
-        
-        populateTable();
-               
     }//GEN-LAST:event_jButtonUpdateActionPerformed
 
     private void tfSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfSearchKeyPressed
@@ -485,7 +606,7 @@ public class ViewJpanel extends javax.swing.JPanel {
         
         vEmpDetails.setRowSorter(rowSorter);
         
-        //Refernce Stack Overflow
+        //Refernce from Stack Overflow
         tfSearch.getDocument().addDocumentListener(new DocumentListener(){
 
             @Override
@@ -518,6 +639,121 @@ public class ViewJpanel extends javax.swing.JPanel {
         });
         
     }//GEN-LAST:event_tfSearchKeyPressed
+
+    private void vNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vNameKeyReleased
+        // TODO add your handling code here:
+        String regexString = "^[a-zA-Z\\s]+";
+        Pattern pattern = Pattern.compile(regexString,Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(vName.getText());
+        if(!matcher.matches()){
+            vErrName.setText("Please enter a valid Name");
+            invalidEmployee = true;
+        }else{
+            vErrName.setText("");
+            invalidEmployee = false;
+        }
+    }//GEN-LAST:event_vNameKeyReleased
+
+    private void vEmpIdKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vEmpIdKeyReleased
+        // TODO add your handling code here:
+        String regexString = "[+-]?[0-9]+";
+        Pattern pattern = Pattern.compile(regexString,Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(vEmpId.getText());
+        if(!matcher.matches()){
+            vErrEmpId.setText("Please enter a valid Employee Id");
+            invalidEmployee = true;
+        }else{
+            vErrEmpId.setText("");
+            invalidEmployee = false;
+        }
+    }//GEN-LAST:event_vEmpIdKeyReleased
+
+    private void vAgeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vAgeKeyReleased
+        // TODO add your handling code here:
+        String regexString = "^(?:(?!0)\\d{1,2}|100)$";
+        Pattern pattern = Pattern.compile(regexString,Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(vAge.getText());
+        if(!matcher.matches()){
+            vErrAge.setText("Please enter a valid Age");
+            invalidEmployee = true;
+        }else{
+            vErrAge.setText("");
+            invalidEmployee = false;
+        }
+    }//GEN-LAST:event_vAgeKeyReleased
+
+    private void vStartDateKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vStartDateKeyReleased
+        // TODO add your handling code here:
+        try {
+        Date date = new Date(vStartDate.getText());
+        String inputDate = "2016-01-07 10:11:30.500";
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+        dateFormat.setLenient(false);
+        date = dateFormat.parse(inputDate);
+        invalidEmployee = false;
+        vErrStartDate.setText("");
+        } catch (Exception IllegalArgumentException) { 
+            //Code should be added to handle invalid date format
+            vErrStartDate.setText("Valid Date Format is 29 Sep, 2022");
+            invalidEmployee = true;
+        }
+    }//GEN-LAST:event_vStartDateKeyReleased
+
+    private void vPhoneNumberKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vPhoneNumberKeyReleased
+        // TODO add your handling code here:
+        String regexString = "^\\d{10}$";
+        Pattern pattern = Pattern.compile(regexString,Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(vPhoneNumber.getText());
+        if(!matcher.matches()){
+            vErrPhoneNumber.setText("Please enter a valid Phonenumber");
+            invalidEmployee = true;
+        }else{
+            vErrPhoneNumber.setText("");
+            invalidEmployee = false;
+        }
+    }//GEN-LAST:event_vPhoneNumberKeyReleased
+
+    private void vEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vEmailKeyReleased
+        // TODO add your handling code here:
+        String regexString = "^(.+)@(\\S+)$";
+        Pattern pattern = Pattern.compile(regexString,Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(vEmail.getText());
+        if(!matcher.matches()){
+            vErrEmail.setText("Please enter a valid Email");
+            invalidEmployee = true;
+        }else{
+            vErrEmail.setText("");
+            invalidEmployee = false;
+        }
+    }//GEN-LAST:event_vEmailKeyReleased
+
+    private void vGenderKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vGenderKeyReleased
+        // TODO add your handling code here:
+        String regexString = "^M(ale)?$|^F(emale)?$|^Other?$";
+        Pattern pattern = Pattern.compile(regexString,Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(vGender.getText());
+        if(!matcher.matches()){
+            vErrGender.setText("Only Male|Female|Other");
+            invalidEmployee = true;
+        }else{
+            vErrGender.setText("");
+            invalidEmployee = false;
+        }
+    }//GEN-LAST:event_vGenderKeyReleased
+
+    private void vLevelKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vLevelKeyReleased
+        // TODO add your handling code here:
+        String regexString = "^Low?$|^Medium?$|^High?$|^Sky High?$";
+        Pattern pattern = Pattern.compile(regexString,Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(vLevel.getText());
+        if(!matcher.matches()){
+            vErrLevel.setText("Only Low|Medium|High|Sky High");
+            invalidEmployee = true;
+        }else{
+            vErrLevel.setText("");
+            invalidEmployee = false;
+        }
+    }//GEN-LAST:event_vLevelKeyReleased
 
     private Employee getData(DefaultTableModel model,int selectedIndexRow){
         
@@ -614,6 +850,15 @@ public class ViewJpanel extends javax.swing.JPanel {
     private javax.swing.JTextField vEmail;
     private javax.swing.JTable vEmpDetails;
     private javax.swing.JTextField vEmpId;
+    private javax.swing.JLabel vErrAge;
+    private javax.swing.JLabel vErrEmail;
+    private javax.swing.JLabel vErrEmpId;
+    private javax.swing.JLabel vErrGender;
+    private javax.swing.JLabel vErrGender1;
+    private javax.swing.JLabel vErrLevel;
+    private javax.swing.JLabel vErrName;
+    private javax.swing.JLabel vErrPhoneNumber;
+    private javax.swing.JLabel vErrStartDate;
     private javax.swing.JTextField vGender;
     private javax.swing.JTextField vImage;
     private javax.swing.JTextField vLevel;

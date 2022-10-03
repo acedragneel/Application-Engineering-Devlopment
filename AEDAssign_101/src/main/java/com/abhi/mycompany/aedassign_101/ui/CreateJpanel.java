@@ -15,6 +15,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JTextArea;
 import java.io.File;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
@@ -78,11 +81,9 @@ public class CreateJpanel extends javax.swing.JPanel {
         cErrAge = new javax.swing.JLabel();
         cErrName = new javax.swing.JLabel();
         cErrEmpId = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        cErrEmail = new javax.swing.JLabel();
         cErrDate = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
+        cErrPhone = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 153, 204));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -98,8 +99,8 @@ public class CreateJpanel extends javax.swing.JPanel {
 
         cName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                cNameKeyPressed(evt);
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cNameKeyReleased(evt);
             }
         });
 
@@ -138,7 +139,7 @@ public class CreateJpanel extends javax.swing.JPanel {
         cPositionTitle.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         cSave.setBackground(new java.awt.Color(153, 153, 153));
-        cSave.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        cSave.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         cSave.setText("Save");
         cSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,16 +151,27 @@ public class CreateJpanel extends javax.swing.JPanel {
         jLabel10.setText("Cell Number:");
 
         cPhoneNumber.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cPhoneNumber.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cPhoneNumberKeyReleased(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jLabel11.setText("Email Address:");
 
         cEmail.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cEmailKeyReleased(evt);
+            }
+        });
 
         jLabel12.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jLabel12.setText("Image:");
 
         cImage.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cImage.setEnabled(false);
 
         cGender.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Other" }));
@@ -176,7 +188,7 @@ public class CreateJpanel extends javax.swing.JPanel {
         });
 
         jButton1.setBackground(new java.awt.Color(153, 153, 153));
-        jButton1.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton1.setText("Browse");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -190,20 +202,23 @@ public class CreateJpanel extends javax.swing.JPanel {
         jLabel13.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jLabel13.setText("Team Info:");
 
+        cErrAge.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         cErrAge.setForeground(new java.awt.Color(255, 0, 0));
 
         cErrName.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         cErrName.setForeground(new java.awt.Color(255, 0, 0));
 
+        cErrEmpId.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         cErrEmpId.setForeground(new java.awt.Color(255, 0, 0));
 
-        jLabel16.setText("smnv ");
+        cErrEmail.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        cErrEmail.setForeground(new java.awt.Color(255, 0, 0));
 
-        jLabel18.setText("smnv ");
+        cErrDate.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        cErrDate.setForeground(new java.awt.Color(255, 0, 0));
 
-        jLabel19.setText("smnv ");
-
-        jLabel20.setText("smnv ");
+        cErrPhone.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        cErrPhone.setForeground(new java.awt.Color(255, 0, 0));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -232,14 +247,13 @@ public class CreateJpanel extends javax.swing.JPanel {
                     .addComponent(cEmail)
                     .addComponent(cPositionTitle)
                     .addComponent(cPhoneNumber)
-                    .addComponent(cStartDate)
-                    .addComponent(cImage, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(cTeamInfo)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addComponent(cLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(83, 83, 83))
+                    .addComponent(cStartDate)
+                    .addComponent(cGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cImage, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cTeamInfo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -250,11 +264,9 @@ public class CreateJpanel extends javax.swing.JPanel {
                             .addComponent(cErrName, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cErrAge, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cErrEmpId, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cErrDate, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cErrPhone, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cErrEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(35, 35, 35)))
                 .addComponent(cPhotoIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -291,35 +303,22 @@ public class CreateJpanel extends javax.swing.JPanel {
                             .addComponent(cGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(cStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                    .addComponent(cLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel7))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                    .addComponent(cPositionTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel9))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addComponent(jLabel18)
-                                                .addGap(6, 6, 6)))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(cTeamInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel13)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel19))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(cErrDate, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6)
+                            .addComponent(cErrDate, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cPositionTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cTeamInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13)))
                     .addComponent(cPhotoIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -327,19 +326,15 @@ public class CreateJpanel extends javax.swing.JPanel {
                     .addComponent(jButton1)
                     .addComponent(jLabel12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10))
-                        .addGap(6, 6, 6))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel20)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10)
+                    .addComponent(cErrPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
-                    .addComponent(jLabel16))
+                    .addComponent(cErrEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cSave)
                 .addGap(338, 338, 338))
@@ -349,13 +344,20 @@ public class CreateJpanel extends javax.swing.JPanel {
     private void cSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cSaveActionPerformed
         // TODO add your handling code here:
         
-//        if(!invalidEmployee){
-        
+        if(cName.getText().trim().equalsIgnoreCase("")
+                ||cEmpId.getText().trim().equalsIgnoreCase("")
+                ||cAge.getText().trim().equalsIgnoreCase("")
+                ||cStartDate.getText().trim().equalsIgnoreCase("")
+                ||cPositionTitle.getText().trim().equalsIgnoreCase("")
+                ||cImage.getText().trim().equalsIgnoreCase("")
+                ||cTeamInfo.getText().trim().equalsIgnoreCase("")){
+            invalidEmployee = true;
+        }else{
+            invalidEmployee = false;
+        }
+               
+        if(!invalidEmployee){
         employee = EmployeeForm.employeeDirectory.addNewEmployee();        
-        //^[0-9]+$
-        
-
-        
         employee.setNameStr(cName.getText().trim());
         employee.setEmployeeId(Integer.parseInt(cEmpId.getText().trim()));
         employee.setAge(Integer.parseInt(cAge.getText().trim()));
@@ -371,7 +373,9 @@ public class CreateJpanel extends javax.swing.JPanel {
         employee.setContact(contact);
                 
         JOptionPane.showMessageDialog(this, "New Employee Saved");
-//        }
+        }else{
+            JOptionPane.showMessageDialog(this, "Invlaid Data!!! New Employee is Not Saved");
+        }
         
         cName.setText("");
         cEmpId.setText("");
@@ -400,19 +404,17 @@ public class CreateJpanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void cNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cNameKeyPressed
-
-    }//GEN-LAST:event_cNameKeyPressed
-
     private void cEmpIdKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cEmpIdKeyReleased
         // TODO add your handling code here:
         String regexString = "[+-]?[0-9]+";
         Pattern pattern = Pattern.compile(regexString,Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(cEmpId.getText());
         if(!matcher.matches()){
-            cErrEmpId.setText("Please enter a valid Integer Employee Id");
+            cErrEmpId.setText("Please enter a valid Employee Id");
+            invalidEmployee = true;
         }else{
             cErrEmpId.setText("");
+            invalidEmployee = false;
         }
     }//GEN-LAST:event_cEmpIdKeyReleased
 
@@ -423,21 +425,72 @@ public class CreateJpanel extends javax.swing.JPanel {
         Matcher matcher = pattern.matcher(cAge.getText());
         if(!matcher.matches()){
             cErrAge.setText("Please enter a valid Age");
+            invalidEmployee = true;
         }else{
             cErrAge.setText("");
+            invalidEmployee = false;
         }
     }//GEN-LAST:event_cAgeKeyReleased
+
+    private void cNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cNameKeyReleased
+        // TODO add your handling code here:
+        String regexString = "^[a-zA-Z\\s]+";
+        Pattern pattern = Pattern.compile(regexString,Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(cName.getText());
+        if(!matcher.matches()){
+            cErrName.setText("Please enter a valid Name");
+            invalidEmployee = true;
+        }else{
+            cErrName.setText("");
+            invalidEmployee = false;
+        }
+    }//GEN-LAST:event_cNameKeyReleased
 
     private void cStartDateKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cStartDateKeyReleased
         // TODO add your handling code here:
         try {
-            Date date = new Date(cStartDate.getText());
-        } catch (Exception e) {
-            cErrDate.setText("Please enter a valid Age");
+        Date date = new Date(cStartDate.getText());
+        String inputDate = "2016-01-07 10:11:30.500";
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+        dateFormat.setLenient(false);
+        date = dateFormat.parse(inputDate);
+        invalidEmployee = false;
+        cErrDate.setText("");
+        } catch (Exception IllegalArgumentException) { 
+            //Code should be added to handle invalid date format
+            cErrDate.setText("Valid Date Format is 29 Sep, 2022");
+            invalidEmployee = true;
         }
 
-        
     }//GEN-LAST:event_cStartDateKeyReleased
+
+    private void cEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cEmailKeyReleased
+        // TODO add your handling code here:
+        String regexString = "^(.+)@(\\S+)$";
+        Pattern pattern = Pattern.compile(regexString,Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(cEmail.getText());
+        if(!matcher.matches()){
+            cErrEmail.setText("Please enter a valid Email");
+            invalidEmployee = true;
+        }else{
+            cErrEmail.setText("");
+            invalidEmployee = false;
+        }
+    }//GEN-LAST:event_cEmailKeyReleased
+
+    private void cPhoneNumberKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cPhoneNumberKeyReleased
+        // TODO add your handling code here:
+        String regexString = "^\\d{10}$";
+        Pattern pattern = Pattern.compile(regexString,Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(cPhoneNumber.getText());
+        if(!matcher.matches()){
+            cErrPhone.setText("Please enter a valid Phonenumber");
+            invalidEmployee = true;
+        }else{
+            cErrPhone.setText("");
+            invalidEmployee = false;
+        }
+    }//GEN-LAST:event_cPhoneNumberKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -446,8 +499,10 @@ public class CreateJpanel extends javax.swing.JPanel {
     private javax.swing.JTextField cEmpId;
     private javax.swing.JLabel cErrAge;
     private javax.swing.JLabel cErrDate;
+    private javax.swing.JLabel cErrEmail;
     private javax.swing.JLabel cErrEmpId;
     private javax.swing.JLabel cErrName;
+    private javax.swing.JLabel cErrPhone;
     private javax.swing.JComboBox<String> cGender;
     private javax.swing.JTextField cImage;
     private javax.swing.JComboBox<String> cLevel;
@@ -465,11 +520,7 @@ public class CreateJpanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
