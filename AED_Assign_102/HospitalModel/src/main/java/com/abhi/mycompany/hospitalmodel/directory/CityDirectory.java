@@ -16,8 +16,8 @@ public class CityDirectory {
     
     private ArrayList<City> cityDirectory;
 
-    public CityDirectory(ArrayList<City> city) {
-        this.cityDirectory = city;
+    public CityDirectory() {
+        this.cityDirectory = new ArrayList<>();
     }
 
     public ArrayList<City> getCity() {
@@ -28,8 +28,8 @@ public class CityDirectory {
         this.cityDirectory = city;
     }
     
-    public City addNewCity(String cityName,Community community){
-        City city = new City(cityName,community);
+    public City addNewCity(String states, String cities, Community community){
+        City city = new City(states,cities, community);
         cityDirectory.add(city);
         return city;
     }

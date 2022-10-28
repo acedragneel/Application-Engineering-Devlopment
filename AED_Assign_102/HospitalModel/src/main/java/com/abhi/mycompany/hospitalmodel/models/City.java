@@ -12,20 +12,32 @@ import java.util.ArrayList;
  */
 public class City {
     
-    private String Name;
+    private String States;
+    private String Cities;
     private ArrayList<Community> commDirectory = new ArrayList<>();
-
-    public City(String Name, Community community) {
-        this.Name = Name;
+    private Community community;
+    
+    public City(String Name, String Cities, Community community) {
+        this.States = Name;
+        this.Cities = Cities;
         this.commDirectory.add(community);
+        this.community = community;
     }
 
-    public String getName() {
-        return Name;
+    public String getCities() {
+        return Cities;
     }
 
-    public void setName(String Name) {
-        this.Name = Name;
+    public void setCities(String Cities) {
+        this.Cities = Cities;
+    }
+    
+    public String getStates() {
+        return States;
+    }
+
+    public void setStates(String Name) {
+        this.States = Name;
     }
 
     public ArrayList<Community> getCommDirectory() {
@@ -36,14 +48,20 @@ public class City {
         this.commDirectory = commDirectory;
     }
     
+    public Community getCommunity(){
+        return community;
+    }
+    
     public Community addNewCommunity(int zipcode, String address, House house){
         Community community = new Community(zipcode,address,house);
         commDirectory.add(community);
         return community;
         
     }
-    
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "City{" + "States=" + States + ", Cities=" + Cities + '}';
+    }
+       
 }

@@ -5,6 +5,7 @@
 package com.abhi.mycompany.hospitalmodel.userAccount;
 
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 /**
  *
@@ -14,7 +15,7 @@ public class UserAccountDirectory {
     
     private ArrayList<UserAccount> userAccountList;
 
-    public UserAccountDirectory(ArrayList<UserAccount> userAccountList) {
+    public UserAccountDirectory() {
         this.userAccountList = new ArrayList<>();
     }
         
@@ -23,19 +24,45 @@ public class UserAccountDirectory {
     }
     
     public UserAccount authenticateUser(String username, String password){
-    for (UserAccount ua : userAccountList)
-        if (ua.getUsername().equals(username) && ua.getPassword().equals(password)){
-            return ua;
-        }
+            for (UserAccount ua : userAccountList)
+                if (ua.getUsername().equals(username) && ua.getPassword().equals(password)){
+                    return ua;
+                }
     return null;
     }
     
-    public UserAccount createUserAccount(String username, String password){
-        UserAccount userAccount = new UserAccount(username,password);
+    public UserAccount createUserAccount(String username, String password, String roles){
+        UserAccount userAccount = new UserAccount(username,password,roles);
         userAccount.setUsername(username);
         userAccount.setPassword(password);
+        userAccount.setRole(roles);
         userAccountList.add(userAccount);
         return userAccount;
+    }
+    
+    public void deleteUserAccount(UserAccount userAccount){
+        
+        ListIterator<UserAccount> var = userAccountList.listIterator();
+
+        while (var.hasNext()) {
+
+            if (var.next().equals(userAccount)){
+              var.remove();
+            }
+        }
+
+    }
+    
+    public UserAccount getUserAccount(UserAccount userAccount) {
+                
+        UserAccount userAccountLocal = null;
+        
+        for(UserAccount emp : userAccountList){
+            if(emp.equals(userAccount))
+                userAccountLocal =  emp;
+        }
+                       
+         return userAccountLocal;
     }
           
 }

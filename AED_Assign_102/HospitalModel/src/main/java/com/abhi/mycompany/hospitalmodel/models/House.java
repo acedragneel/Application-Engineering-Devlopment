@@ -23,5 +23,12 @@ public class House {
     public void setHouseName(String houseName) {
         this.houseName = houseName;
     }
+
+    @Override
+    public String toString() {
+        return "House{" + "houseName=" + houseName + '}';
+    }
+    
+    
     
 }

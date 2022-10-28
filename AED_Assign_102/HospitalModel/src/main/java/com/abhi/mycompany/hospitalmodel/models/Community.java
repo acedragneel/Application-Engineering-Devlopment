@@ -12,6 +12,7 @@ import java.util.ArrayList;
  */
 public class Community {
     
+    private String CommunityName;
     private int zipCode;
     private String Address;
     private ArrayList<House> housesDirectory = new ArrayList<>();
@@ -45,11 +46,25 @@ public class Community {
     public void setHousesDirectory(ArrayList<House> housesDirectory) {
         this.housesDirectory = housesDirectory;
     }
-    
+
+    public String getCommunityName() {
+        return CommunityName;
+    }
+
+    public void setCommunityName(String CommunityName) {
+        this.CommunityName = CommunityName;
+    }
+      
     public House addNewHouse(String houseName){
         House house = new House(houseName);
         housesDirectory.add(house);
         return house;
     }
+
+    @Override
+    public String toString() {
+        return "Community{" + "zipCode=" + zipCode + ", Address=" + Address + '}';
+    }
+       
    
 }

@@ -61,9 +61,12 @@ public class Hospital {
         }
         return Objects.equals(this.Name, other.Name);
     }
+
+    @Override
+    public String toString() {
+        return "Hospital{" + "Name=" + Name + ", hospitalId=" + hospitalId + '}';
+    }
     
     
-        
-        
-    
+                    
 }

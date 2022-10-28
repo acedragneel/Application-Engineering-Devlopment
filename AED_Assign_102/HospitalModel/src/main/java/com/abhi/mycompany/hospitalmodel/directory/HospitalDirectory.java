@@ -27,8 +27,8 @@ public class HospitalDirectory {
         this.directory = hospital;
     }
     
-    public Hospital addNewHospital(String name,int HospitalId){
-        Hospital hospital = new Hospital(name,HospitalId);
+    public Hospital addNewHospital(String name,int hospitalId){
+        Hospital hospital = new Hospital(name,hospitalId);
         directory.add(hospital);
         return hospital;
     }

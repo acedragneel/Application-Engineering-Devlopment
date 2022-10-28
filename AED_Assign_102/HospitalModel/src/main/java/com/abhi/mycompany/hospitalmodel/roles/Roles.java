@@ -4,41 +4,34 @@
  */
 package com.abhi.mycompany.hospitalmodel.roles;
 
-import com.abhi.mycompany.hospitalmodel.userAccount.UserAccount;
-import javax.swing.JPanel;
-
 /**
  *
  * @author abhilashgp
  */
 public class Roles {
     
-     public enum RoleType {
-        Admin("Admin"),
-        Doctor("Doctor"),
-        Patient("Patient"),
-        Community("Community");
-
-        private String value;
-
-        private RoleType(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return value;
-        }
-    }
+     public String Admin = "Admin";
+     public String Doctor = "Doctor";
+     public String Patient = "Patient";
+     public String Community = "Community";
+     public String Hospital = "Hospital";
      
-    public RoleType type;
+    public String roleType;
+
+    public Roles() {
+    }
+
+    public String getRoleType() {
+        return roleType;
+    }
+
+    public void setRoleType(String roleType) {
+        this.roleType = roleType;
+    }
 
     @Override
     public String toString() {
-        return (type != null) ? this.type.getValue() : this.getClass().getName();
+        return "Roles{" + "roleType=" + roleType + '}';
     }
+   
 }
