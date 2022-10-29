@@ -23,8 +23,9 @@ public class Person {
     private House house;
     private Date doa;
     private UserAccount useraccount;
+    private String Gender;
 
-    public Person(String Name, int PersonId, String UserRoles, Roles roles, City city, Community community, House house, Date doa, UserAccount userAccount) {
+    public Person(String Name, int PersonId, String UserRoles, Roles roles, City city, Community community, House house, Date doa, UserAccount useraccount, String Gender) {
         this.Name = Name;
         this.PersonId = PersonId;
         this.UserRoles = UserRoles;
@@ -33,7 +34,16 @@ public class Person {
         this.community = community;
         this.house = house;
         this.doa = doa;
-        this.useraccount = userAccount;
+        this.useraccount = useraccount;
+        this.Gender = Gender;
+    }
+
+    public String getGender() {
+        return Gender;
+    }
+
+    public void setGender(String Gender) {
+        this.Gender = Gender;
     }
 
     public String getName() {

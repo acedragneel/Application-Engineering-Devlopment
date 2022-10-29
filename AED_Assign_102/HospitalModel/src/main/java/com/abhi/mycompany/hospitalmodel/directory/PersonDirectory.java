@@ -41,8 +41,8 @@ public class PersonDirectory {
     return null;
     }
     
-    public Person addNewPerson(String Name, int PersonId, String UserRoles, Roles roles, City city, Community community, House house, Date doa, UserAccount userAccount){
-        Person person = new Person(Name, PersonId, UserRoles, roles, city, community, house, doa, userAccount);
+    public Person addNewPerson(String Name, int PersonId, String UserRoles, Roles roles, City city, Community community, House house, Date doa, UserAccount userAccount, String GenderString){
+        Person person = new Person(Name, PersonId, UserRoles, roles, city, community, house, doa, userAccount, GenderString);
         personDirectory.add(person);
         return person;
     } 

@@ -5,10 +5,14 @@
 package com.abhi.mycompany.hospitalmodel.frame;
 
 import com.abhi.mycompany.hospitalmodel.directory.CityDirectory;
+import com.abhi.mycompany.hospitalmodel.directory.DoctorDirectory;
+import com.abhi.mycompany.hospitalmodel.directory.PatientDirectory;
 import com.abhi.mycompany.hospitalmodel.directory.PersonDirectory;
 import com.abhi.mycompany.hospitalmodel.models.City;
 import com.abhi.mycompany.hospitalmodel.models.Community;
+import com.abhi.mycompany.hospitalmodel.models.Doctor;
 import com.abhi.mycompany.hospitalmodel.models.House;
+import com.abhi.mycompany.hospitalmodel.models.Patient;
 import com.abhi.mycompany.hospitalmodel.models.Person;
 import com.abhi.mycompany.hospitalmodel.roles.Roles;
 import com.abhi.mycompany.hospitalmodel.userAccount.UserAccount;
@@ -32,6 +36,8 @@ public class LoginFrame extends javax.swing.JFrame {
     UserAccountDirectory userAccountDirectory;
     PersonDirectory personDirectory;
     CityDirectory cityDirectory;
+    PatientDirectory patientDirectory;
+    DoctorDirectory doctorDirectory;
     Roles roles;
     
     public LoginFrame() {
@@ -39,6 +45,8 @@ public class LoginFrame extends javax.swing.JFrame {
         this.userAccountDirectory = new UserAccountDirectory();
         this.personDirectory = new PersonDirectory();
         this.cityDirectory = new CityDirectory();
+        this.patientDirectory = new PatientDirectory();
+        this.doctorDirectory = new DoctorDirectory();
         this.roles = new Roles();
         populateUserTable();
     }
@@ -63,11 +71,11 @@ public class LoginFrame extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         password = new javax.swing.JPasswordField();
-        jLabel20 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         rolesPanel = new javax.swing.JPanel();
         accounts = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
+        roleRegister = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
         mAccounts = new javax.swing.JPanel();
         mRoles = new javax.swing.JComboBox<>();
@@ -102,49 +110,75 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         rCities = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        rDob = new javax.swing.JFormattedTextField();
         jLabel18 = new javax.swing.JLabel();
         rUsername = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         rPassword = new javax.swing.JTextField();
         saveRegister = new javax.swing.JButton();
         jLabel22 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        rGender = new javax.swing.JComboBox<>();
+        rDob = new com.toedter.calendar.JDateChooser();
         jLabel24 = new javax.swing.JLabel();
-        personView = new javax.swing.JPanel();
         PatientPanel = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
         pPatientId = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
         pName = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        pSave = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jLabel28 = new javax.swing.JLabel();
+        pBloodPressure = new javax.swing.JTextField();
+        pBloodType = new javax.swing.JComboBox<>();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        pGender = new javax.swing.JComboBox<>();
+        jButton2 = new javax.swing.JButton();
+        pView = new javax.swing.JButton();
+        pUpdate = new javax.swing.JButton();
+        pDob = new com.toedter.calendar.JDateChooser();
+        DoctorPanel = new javax.swing.JPanel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        dName = new javax.swing.JTextField();
+        jLabel35 = new javax.swing.JLabel();
+        dDoctorId = new javax.swing.JTextField();
+        jLabel36 = new javax.swing.JLabel();
+        dDepartment = new javax.swing.JTextField();
+        dSave = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        dBack = new javax.swing.JButton();
+        dView = new javax.swing.JButton();
+        dUpdate = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1000, 600));
 
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
-        jLabel1.setText("Login Form");
+        jLabel1.setFont(new java.awt.Font("Castellar", 1, 36)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("HOSPITAL MANAGEMENT");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(358, 358, 358)
+                .addGap(220, 220, 220)
                 .addComponent(jLabel1)
-                .addContainerGap(460, Short.MAX_VALUE))
+                .addContainerGap(236, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jSplitPane1.setTopComponent(jPanel1);
@@ -153,6 +187,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
         loginPanel.setBackground(new java.awt.Color(0, 153, 204));
         loginPanel.setMinimumSize(new java.awt.Dimension(936, 471));
+        loginPanel.setPreferredSize(new java.awt.Dimension(1000, 600));
         loginPanel.setLayout(null);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -193,28 +228,20 @@ public class LoginFrame extends javax.swing.JFrame {
         loginPanel.add(password);
         password.setBounds(400, 190, 270, 29);
 
-        jLabel20.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
-        jLabel20.setText("Click here to Register");
-        jLabel20.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel20MouseClicked(evt);
-            }
-        });
-        loginPanel.add(jLabel20);
-        jLabel20.setBounds(370, 290, 210, 26);
-
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Downloads\\pexels-anna-shvets-3683116.jpg")); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon("F:\\NorthEastern Classes\\AED\\AED_Assign_101\\GowdruPalakshappa_Abhilash_002764845\\AED_Assign_102\\HospitalModel\\images\\pexels-oles-kanebckuu-127873.jpg")); // NOI18N
         jLabel7.setText("jLabel7");
         loginPanel.add(jLabel7);
-        jLabel7.setBounds(0, 0, 1000, 540);
+        jLabel7.setBounds(0, 0, 1000, 610);
 
         Parent.add(loginPanel, "card2");
 
         rolesPanel.setBackground(new java.awt.Color(204, 0, 255));
         rolesPanel.setMinimumSize(new java.awt.Dimension(0, 0));
+        rolesPanel.setPreferredSize(new java.awt.Dimension(900, 600));
         rolesPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         accounts.setBackground(new java.awt.Color(153, 153, 153));
+        accounts.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         accounts.setText("Manage Accounts");
         accounts.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -231,11 +258,20 @@ public class LoginFrame extends javax.swing.JFrame {
                 jButton7ActionPerformed(evt);
             }
         });
-        rolesPanel.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 570, -1, -1));
+        rolesPanel.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 390, -1, -1));
+
+        roleRegister.setBackground(new java.awt.Color(153, 153, 153));
+        roleRegister.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        roleRegister.setText("Register");
+        roleRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                roleRegisterActionPerformed(evt);
+            }
+        });
+        rolesPanel.add(roleRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 160, -1));
 
         jLabel21.setIcon(new javax.swing.ImageIcon("F:\\NorthEastern Classes\\AED\\AED_Assign_101\\GowdruPalakshappa_Abhilash_002764845\\AED_Assign_102\\HospitalModel\\images\\white-wallpapers-37.jpg")); // NOI18N
-        jLabel21.setText("jLabel21");
-        rolesPanel.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 0, 990, 640));
+        rolesPanel.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 1, 1010, 600));
 
         Parent.add(rolesPanel, "card3");
 
@@ -317,8 +353,8 @@ public class LoginFrame extends javax.swing.JFrame {
         mAccounts.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(421, 434, -1, -1));
 
         jLabel23.setIcon(new javax.swing.ImageIcon("F:\\NorthEastern Classes\\AED\\AED_Assign_101\\GowdruPalakshappa_Abhilash_002764845\\AED_Assign_102\\HospitalModel\\images\\white-wallpapers-37.jpg")); // NOI18N
-        jLabel23.setText("jLabel23");
-        mAccounts.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 1, 1020, 590));
+        jLabel23.setPreferredSize(new java.awt.Dimension(900, 600));
+        mAccounts.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 1, 950, 520));
 
         Parent.add(mAccounts, "card4");
 
@@ -342,7 +378,7 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel11.setText("User Roles:");
         registerPanel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 192, -1, -1));
 
-        rRoles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Doctor", "Patient", "Hospital", "Community" }));
+        rRoles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Doctor", "Patient", "Hospital", "Community" }));
         registerPanel.add(rRoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 188, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -374,9 +410,6 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel17.setText("DOB:");
         registerPanel.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 356, -1, -1));
 
-        rDob.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM))));
-        registerPanel.add(rDob, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 352, 259, -1));
-
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel18.setText("Username:");
         registerPanel.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(532, 110, -1, -1));
@@ -397,6 +430,7 @@ public class LoginFrame extends javax.swing.JFrame {
         });
         registerPanel.add(saveRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(748, 188, -1, -1));
 
+        jLabel22.setBackground(new java.awt.Color(255, 255, 255));
         jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel22.setText("Click Here to Login");
         jLabel22.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -404,26 +438,21 @@ public class LoginFrame extends javax.swing.JFrame {
                 jLabel22MouseClicked(evt);
             }
         });
-        registerPanel.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(665, 438, -1, -1));
+        registerPanel.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 430, -1, -1));
+
+        jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jLabel31.setText("Gender:");
+        registerPanel.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 181, -1, 40));
+
+        rGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", " " }));
+        registerPanel.add(rGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, -1, -1));
+        registerPanel.add(rDob, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, 260, -1));
 
         jLabel24.setIcon(new javax.swing.ImageIcon("F:\\NorthEastern Classes\\AED\\AED_Assign_101\\GowdruPalakshappa_Abhilash_002764845\\AED_Assign_102\\HospitalModel\\images\\white-wallpapers-37.jpg")); // NOI18N
-        jLabel24.setText("jLabel24");
-        registerPanel.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 530));
+        jLabel24.setPreferredSize(new java.awt.Dimension(900, 600));
+        registerPanel.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 1, 990, 500));
 
         Parent.add(registerPanel, "card5");
-
-        javax.swing.GroupLayout personViewLayout = new javax.swing.GroupLayout(personView);
-        personView.setLayout(personViewLayout);
-        personViewLayout.setHorizontalGroup(
-            personViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 983, Short.MAX_VALUE)
-        );
-        personViewLayout.setVerticalGroup(
-            personViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-        );
-
-        Parent.add(personView, "card6");
 
         jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel25.setText("Patient");
@@ -434,11 +463,61 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel27.setText("PatientId:");
 
-        jButton2.setText("Save");
+        pSave.setBackground(new java.awt.Color(153, 153, 153));
+        pSave.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        pSave.setText("Save");
+        pSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pSaveActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("View");
-
+        jButton6.setBackground(new java.awt.Color(153, 153, 153));
+        jButton6.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jButton6.setText("Book An Appointment");
+
+        jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jLabel28.setText("DOB:");
+
+        pBloodType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B", "AB", "O" }));
+
+        jLabel29.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jLabel29.setText("BloodType:");
+
+        jLabel30.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jLabel30.setText("BloodPressure:");
+
+        jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jLabel32.setText("Gender:");
+
+        pGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
+
+        jButton2.setBackground(new java.awt.Color(153, 153, 153));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jButton2.setText("Back");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        pView.setBackground(new java.awt.Color(153, 153, 153));
+        pView.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        pView.setText("View");
+        pView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pViewActionPerformed(evt);
+            }
+        });
+
+        pUpdate.setBackground(new java.awt.Color(153, 153, 153));
+        pUpdate.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        pUpdate.setText("Update");
+        pUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pUpdateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PatientPanelLayout = new javax.swing.GroupLayout(PatientPanel);
         PatientPanel.setLayout(PatientPanelLayout);
@@ -453,18 +532,37 @@ public class LoginFrame extends javax.swing.JFrame {
                         .addGap(77, 77, 77)
                         .addGroup(PatientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel27)
-                            .addComponent(jLabel26))
+                            .addComponent(jLabel26)
+                            .addComponent(jLabel28)
+                            .addComponent(jLabel29)
+                            .addComponent(jLabel30))
                         .addGap(18, 18, 18)
                         .addGroup(PatientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pName, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(PatientPanelLayout.createSequentialGroup()
+                                .addComponent(pSave)
+                                .addGap(18, 18, 18)
+                                .addComponent(pView)
+                                .addGap(18, 18, 18)
+                                .addComponent(pUpdate)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton2)
+                                .addGap(48, 48, 48))
+                            .addGroup(PatientPanelLayout.createSequentialGroup()
+                                .addGroup(PatientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(pName, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(PatientPanelLayout.createSequentialGroup()
+                                        .addComponent(pBloodType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel32)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(PatientPanelLayout.createSequentialGroup()
                                 .addGroup(PatientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(PatientPanelLayout.createSequentialGroup()
-                                        .addComponent(jButton2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton3))
-                                    .addComponent(pPatientId, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 196, Short.MAX_VALUE)
+                                    .addComponent(pDob, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+                                    .addComponent(pBloodPressure)
+                                    .addComponent(pPatientId))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 166, Short.MAX_VALUE)
                                 .addComponent(jButton6)))))
                 .addGap(170, 170, 170))
         );
@@ -482,14 +580,151 @@ public class LoginFrame extends javax.swing.JFrame {
                     .addComponent(pPatientId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel27)
                     .addComponent(jButton6))
-                .addGap(29, 29, 29)
+                .addGap(18, 18, 18)
                 .addGroup(PatientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addContainerGap(343, Short.MAX_VALUE))
+                    .addComponent(pBloodType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel29)
+                    .addComponent(jLabel32)
+                    .addComponent(pGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(PatientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pBloodPressure, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel30))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(PatientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PatientPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel28)
+                        .addGap(18, 18, 18)
+                        .addGroup(PatientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(pSave)
+                            .addComponent(jButton2)
+                            .addComponent(pView)
+                            .addComponent(pUpdate)))
+                    .addComponent(pDob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(172, Short.MAX_VALUE))
         );
 
         Parent.add(PatientPanel, "card7");
+
+        jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel33.setText("Doctor");
+
+        jLabel34.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jLabel34.setText("Name:");
+
+        jLabel35.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jLabel35.setText("DocId:");
+
+        jLabel36.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jLabel36.setText("Department:");
+
+        dSave.setBackground(new java.awt.Color(153, 153, 153));
+        dSave.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        dSave.setText("Save");
+        dSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dSaveActionPerformed(evt);
+            }
+        });
+
+        jButton8.setBackground(new java.awt.Color(153, 153, 153));
+        jButton8.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jButton8.setText("List Of Paitents");
+
+        dBack.setBackground(new java.awt.Color(153, 153, 153));
+        dBack.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        dBack.setText("Back");
+        dBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dBackActionPerformed(evt);
+            }
+        });
+
+        dView.setBackground(new java.awt.Color(153, 153, 153));
+        dView.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        dView.setText("View");
+        dView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dViewActionPerformed(evt);
+            }
+        });
+
+        dUpdate.setBackground(new java.awt.Color(153, 153, 153));
+        dUpdate.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        dUpdate.setText("Update");
+
+        javax.swing.GroupLayout DoctorPanelLayout = new javax.swing.GroupLayout(DoctorPanel);
+        DoctorPanel.setLayout(DoctorPanelLayout);
+        DoctorPanelLayout.setHorizontalGroup(
+            DoctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DoctorPanelLayout.createSequentialGroup()
+                .addGroup(DoctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(DoctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(DoctorPanelLayout.createSequentialGroup()
+                            .addGap(425, 425, 425)
+                            .addComponent(jLabel33))
+                        .addGroup(DoctorPanelLayout.createSequentialGroup()
+                            .addGroup(DoctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, DoctorPanelLayout.createSequentialGroup()
+                                    .addGap(121, 121, 121)
+                                    .addGroup(DoctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(DoctorPanelLayout.createSequentialGroup()
+                                            .addComponent(jLabel35)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(dDoctorId))
+                                        .addGroup(DoctorPanelLayout.createSequentialGroup()
+                                            .addComponent(jLabel34)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(dName, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(DoctorPanelLayout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addGroup(DoctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(DoctorPanelLayout.createSequentialGroup()
+                                            .addComponent(dSave)
+                                            .addGap(27, 27, 27)
+                                            .addComponent(dView)
+                                            .addGap(30, 30, 30)
+                                            .addComponent(dUpdate))
+                                        .addGroup(DoctorPanelLayout.createSequentialGroup()
+                                            .addComponent(jLabel36)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(dDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGap(198, 198, 198)
+                            .addComponent(jButton8)))
+                    .addGroup(DoctorPanelLayout.createSequentialGroup()
+                        .addGap(272, 272, 272)
+                        .addComponent(dBack)))
+                .addContainerGap(213, Short.MAX_VALUE))
+        );
+        DoctorPanelLayout.setVerticalGroup(
+            DoctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DoctorPanelLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel33)
+                .addGap(28, 28, 28)
+                .addGroup(DoctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel34)
+                    .addComponent(dName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(DoctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel35)
+                    .addGroup(DoctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(dDoctorId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton8)))
+                .addGap(18, 18, 18)
+                .addGroup(DoctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel36)
+                    .addComponent(dDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(DoctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dSave)
+                    .addComponent(dBack)
+                    .addComponent(dView)
+                    .addComponent(dUpdate))
+                .addContainerGap(268, Short.MAX_VALUE))
+        );
+
+        Parent.add(DoctorPanel, "card7");
 
         jSplitPane1.setRightComponent(Parent);
 
@@ -497,11 +732,11 @@ public class LoginFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 983, Short.MAX_VALUE)
+            .addComponent(jSplitPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
 
         pack();
@@ -514,15 +749,12 @@ public class LoginFrame extends javax.swing.JFrame {
         password.setText("");
         
     }//GEN-LAST:event_jButton4ActionPerformed
-
-    Boolean login = false;
-        
+       
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         String userStr = userName.getText();
         String passWordStr = password.getText();
         if(userStr.equalsIgnoreCase("admin") && passWordStr.equalsIgnoreCase("12345")){
-            login = true;
             //JOptionPane.showMessageDialog(this, "Login in SuccessFul");
             Parent.removeAll();
             Parent.add(rolesPanel);
@@ -532,9 +764,48 @@ public class LoginFrame extends javax.swing.JFrame {
             populateUserTable();
         }else {
             
-           UserAccount useraccount = userAccountDirectory.authenticateUser(userName.getText(), password.getText());         
-            System.out.println(useraccount.toString());
-            
+           UserAccount useraccount = userAccountDirectory.authenticateUser(userName.getText(), password.getText()); 
+           
+            if(useraccount != null){
+                if(useraccount.getRole().equals(roles.Admin)){
+                         Parent.removeAll();
+                         Parent.add(rolesPanel);
+                         Parent.repaint();
+                         Parent.revalidate();
+
+               }
+               if(useraccount.getRole().equals(roles.Patient)){
+                        Parent.removeAll();
+                        Parent.add(PatientPanel);
+                        Parent.repaint();
+                        Parent.revalidate();
+                        
+                    Person person = personDirectory.authenticateUser(userName.getText(), password.getText());
+                    if(person != null){
+                        int patientId = person.getPersonId() + 1;
+                        pName.setText(person.getName());
+                        Date date = person.getDoa();
+                        pDob.setDate(date);
+                        pPatientId.setText((String.valueOf(patientId)));
+                        pGender.setSelectedItem(person.getGender());
+                    }                        
+               }
+               if(useraccount.getRole().equals(roles.Doctor)){
+                        Parent.removeAll();
+                        Parent.add(DoctorPanel);
+                        Parent.repaint();
+                        Parent.revalidate();
+                         Person person = personDirectory.authenticateUser(userName.getText(), password.getText());
+                        if(person != null){
+                            int doctorId = person.getPersonId() + 2;
+                            dName.setText(person.getName());
+                            dDoctorId.setText((String.valueOf(doctorId)));
+                        }                        
+                        
+               }
+           }else{
+                JOptionPane.showMessageDialog(this, "Invalid Email and UserName");  
+           }           
         }
         
          
@@ -620,8 +891,14 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void saveRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveRegisterActionPerformed
         // TODO add your handling code here:   
-        
-        int personId = Integer.parseInt(rPersonId.getText());
+        if(rPersonId.getText().trim().equalsIgnoreCase("")|| rName.getText().trim().equalsIgnoreCase("")|| rHouse.getText().trim().equalsIgnoreCase("") || 
+                rAddress.getText().trim().equalsIgnoreCase("") || rZipCode.getText().trim().equalsIgnoreCase("") || rDob.getDate() == null||  
+                rStates.getText().trim().equalsIgnoreCase("") || rCities.getText().trim().equalsIgnoreCase("") || rUsername .getText().trim().equalsIgnoreCase("") || 
+                rPassword.getText().trim().equalsIgnoreCase(""))
+        {
+            JOptionPane.showMessageDialog(this, "Empty TextFields");
+        } else{    
+        int personId = Integer.parseInt(rPersonId.getText()); 
         String RoleString = getSelectedValue((String)rRoles.getSelectedItem());
         Roles role = new Roles();
         role.setRoleType(RoleString);
@@ -632,18 +909,19 @@ public class LoginFrame extends javax.swing.JFrame {
         String States = rStates.getText();
         String Cities = rCities.getText();
         City city = new City(States, Cities, community);
-        Date date = new Date(rDob.getText());
+        Date date = rDob.getDate();
         UserAccount userAccount = new UserAccount();
         userAccount.setPassword(rPassword.getText());
         userAccount.setUsername(rUsername.getText());
         userAccount.setRole(RoleString);   
+        String Gender = (String)rGender.getSelectedItem();
         
         
         cityDirectory.addNewCity(States, Cities, community);
         
-        userAccountDirectory.createUserAccount(rPassword.getText(), rUsername.getText(),RoleString);
+        userAccountDirectory.createUserAccount(rUsername.getText(), rPassword.getText(),RoleString);
         
-        personDirectory.addNewPerson(rName.getText(),personId , RoleString, role, city, community, house, date, userAccount);  
+        personDirectory.addNewPerson(rName.getText(),personId , RoleString, role, city, community, house, date, userAccount, Gender);  
         
         ArrayList list = personDirectory.getPersonDirectory();
         
@@ -651,17 +929,15 @@ public class LoginFrame extends javax.swing.JFrame {
             System.out.println(list.get(i) + " ");
         }
         
+        JOptionPane.showMessageDialog(this, "Saved a Person");
+        
         resetPerson();
+            
+        }
+        
+
         
     }//GEN-LAST:event_saveRegisterActionPerformed
-
-    private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
-        // TODO add your handling code here:
-        Parent.removeAll();
-        Parent.add(registerPanel);
-        Parent.repaint();
-        Parent.revalidate();  
-    }//GEN-LAST:event_jLabel20MouseClicked
 
     private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
         // TODO add your handling code here:
@@ -686,6 +962,116 @@ public class LoginFrame extends javax.swing.JFrame {
         Parent.repaint();
         Parent.revalidate(); 
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void pSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pSaveActionPerformed
+        // TODO add your handling code here:
+        if(pPatientId.getText().trim().equalsIgnoreCase("") || pName.getText().trim().equalsIgnoreCase("")||
+                pBloodPressure.getText().trim().equalsIgnoreCase("")){
+                        JOptionPane.showMessageDialog(this, "Empty TextFields");
+        }else{
+            Person person = personDirectory.authenticateUser(userName.getText(), password.getText());
+            if(person != null){
+
+                String patientName = pName.getText();
+                int patientId = Integer.parseInt(pPatientId.getText());
+                
+                pGender.setSelectedItem(person.getGender());
+                String BloodType = (String)pBloodType.getSelectedItem();
+                String BloodPressure = pBloodPressure.getText();
+                Date date = person.getDoa();
+                pDob.setDate(date);
+                Patient patient = patientDirectory.addNewPatient(patientName, patientId, BloodType, BloodPressure, person.getName(), person.getPersonId(), person.getUserRoles(), person.getRoles(), person.getCity(), person.getCommunity(), person.getHouse(), person.getDoa(), person.getUseraccount(), person.getGender());
+
+                System.out.println(patient.toString());
+                JOptionPane.showMessageDialog(this, "Patient Data Saved");
+                
+                pSave.setEnabled(false);
+                resetPatient();
+            }
+        }
+    }//GEN-LAST:event_pSaveActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Parent.removeAll();
+        Parent.add(loginPanel);
+        Parent.repaint();
+        Parent.revalidate(); 
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void dSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dSaveActionPerformed
+        // TODO add your handling code here:
+        if(dName.getText().trim().equalsIgnoreCase("") || dDoctorId.getText().trim().equalsIgnoreCase("")||
+                dDepartment.getText().trim().equalsIgnoreCase("")){
+                        JOptionPane.showMessageDialog(this, "Empty TextFields");
+        }else{
+            
+            Person person = personDirectory.authenticateUser(userName.getText(), password.getText());
+            if(person != null){
+                    String Name = dName.getText();
+                    int doctorId = Integer.parseInt(dDoctorId.getText());
+                    String Department = dDepartment.getText();
+                    Doctor doctor = doctorDirectory.addNewDoctor(Name, doctorId, Department, person.getName(), person.getPersonId(), person.getUserRoles(), person.getRoles(), person.getCity(), person.getCommunity(), person.getHouse(), person.getDoa(), person.getUseraccount(), person.getGender());
+                    JOptionPane.showMessageDialog(this, "Doctor Data Saved");
+                    dSave.setEnabled(false);
+                    resetDoctor();
+            }           
+        }
+    }//GEN-LAST:event_dSaveActionPerformed
+
+    private void pUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pUpdateActionPerformed
+        // TODO add your handling code here:
+              Patient patient = patientDirectory.authenticateUser(userName.getText(), password.getText());
+            if(patient!=null){
+                patient.setPatientName(pName.getText());
+                patient.setName(pName.getText());
+                patient.setPatientId(Integer.parseInt(pPatientId.getText()));
+                patient.setBloodType((String)pBloodType.getSelectedItem());
+                patient.setBloodPressure(pBloodPressure.getText());
+                patient.setDoa(pDob.getDate());
+                
+                resetPatient();
+                
+                System.out.println(patient.toString());
+ 
+                JOptionPane.showMessageDialog(this, "Patient Updated");                
+            }   
+           
+    }//GEN-LAST:event_pUpdateActionPerformed
+
+    private void dBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dBackActionPerformed
+        // TODO add your handling code here:
+        Parent.removeAll();
+        Parent.add(loginPanel);
+        Parent.repaint();
+        Parent.revalidate(); 
+    }//GEN-LAST:event_dBackActionPerformed
+
+    private void roleRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roleRegisterActionPerformed
+        // TODO add your handling code here:
+        Parent.removeAll();
+        Parent.add(registerPanel);
+        Parent.repaint();
+        Parent.revalidate(); 
+    }//GEN-LAST:event_roleRegisterActionPerformed
+
+    private void dViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dViewActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dViewActionPerformed
+
+    private void pViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pViewActionPerformed
+        // TODO add your handling code here:
+         Patient patient = patientDirectory.authenticateUser(userName.getText(), password.getText());
+            if(patient!=null){                                          
+                pName.setText(patient.getPatientName());
+                String patientId = String.valueOf(patient.getPatientId());
+                pPatientId.setText(patientId);
+                pBloodType.setSelectedItem(patient.getBloodType());
+                pBloodPressure.setText(patient.getBloodPressure());
+                Date date = patient.getDoa();
+                pDob.setDate(date);        
+            }
+    }//GEN-LAST:event_pViewActionPerformed
     
     /**
      * @param args the command line arguments
@@ -796,19 +1182,54 @@ public class LoginFrame extends javax.swing.JFrame {
     
     private void resetPerson() {
         
+        rPersonId.setText("");   
+        rName.setText("");
+        rHouse.setText("");
+        rAddress.setText(""); 
+        rZipCode.setText("") ;
+        rDob.setDate(null);  
+        rStates.setText("");  
+        rCities.setText("");  
+        rUsername .setText("");  
+        rPassword.setText("");
+        
+    }
+    
+    private void resetPatient() {
+        
+        pName.setText("");
+        pPatientId.setText("");
+        pBloodPressure.setText("");
+        pDob.setDate(null);
+        
     }
 
+    private void resetDoctor() {
+        dName.setText("");
+        dDoctorId.setText("");
+        dDepartment.setText("");
+    }
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel DoctorPanel;
     private javax.swing.JPanel Parent;
     private javax.swing.JPanel PatientPanel;
     private javax.swing.JButton accounts;
+    private javax.swing.JButton dBack;
+    private javax.swing.JTextField dDepartment;
+    private javax.swing.JTextField dDoctorId;
+    private javax.swing.JTextField dName;
+    private javax.swing.JButton dSave;
+    private javax.swing.JButton dUpdate;
+    private javax.swing.JButton dView;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -821,7 +1242,6 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
@@ -829,7 +1249,16 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -848,13 +1277,20 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JTable mTableDetails;
     private javax.swing.JButton mUpdate;
     private javax.swing.JTextField mUsername;
+    private javax.swing.JTextField pBloodPressure;
+    private javax.swing.JComboBox<String> pBloodType;
+    private com.toedter.calendar.JDateChooser pDob;
+    private javax.swing.JComboBox<String> pGender;
     private javax.swing.JTextField pName;
     private javax.swing.JTextField pPatientId;
+    private javax.swing.JButton pSave;
+    private javax.swing.JButton pUpdate;
+    private javax.swing.JButton pView;
     private javax.swing.JPasswordField password;
-    private javax.swing.JPanel personView;
     private javax.swing.JTextField rAddress;
     private javax.swing.JTextField rCities;
-    private javax.swing.JFormattedTextField rDob;
+    private com.toedter.calendar.JDateChooser rDob;
+    private javax.swing.JComboBox<String> rGender;
     private javax.swing.JTextField rHouse;
     private javax.swing.JTextField rName;
     private javax.swing.JTextField rPassword;
@@ -864,9 +1300,12 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JTextField rUsername;
     private javax.swing.JTextField rZipCode;
     private javax.swing.JPanel registerPanel;
+    private javax.swing.JButton roleRegister;
     private javax.swing.JPanel rolesPanel;
     private javax.swing.JButton saveRegister;
     private javax.swing.JTextField userName;
     // End of variables declaration//GEN-END:variables
+
+
 
 }

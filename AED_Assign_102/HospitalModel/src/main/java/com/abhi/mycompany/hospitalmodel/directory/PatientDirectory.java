@@ -8,10 +8,12 @@ import com.abhi.mycompany.hospitalmodel.models.City;
 import com.abhi.mycompany.hospitalmodel.models.Community;
 import com.abhi.mycompany.hospitalmodel.models.House;
 import com.abhi.mycompany.hospitalmodel.models.Patient;
+import com.abhi.mycompany.hospitalmodel.models.Person;
 import com.abhi.mycompany.hospitalmodel.roles.Roles;
 import com.abhi.mycompany.hospitalmodel.userAccount.UserAccount;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.ListIterator;
 
 /**
  *
@@ -21,7 +23,7 @@ public class PatientDirectory {
     
     ArrayList<Patient> directory;
 
-    public PatientDirectory(ArrayList<Patient> directory) {
+    public PatientDirectory() {
         this.directory = new ArrayList<>();
     }
 
@@ -33,11 +35,44 @@ public class PatientDirectory {
         this.directory = directory;
     }
     
-    public Patient addNewPatient(String name,int patientId, String Name, int PersonId, String UserRoles, Roles roles, City city, Community community, House house, Date doa, UserAccount userAccount){
-    Patient patient = new Patient(name,patientId, Name, PersonId, UserRoles, roles, city, community, house, doa, userAccount);
+    public Patient addNewPatient(String name,int patientId, String BloodType, String BloodPressure, String Name, int PersonId, String UserRoles, Roles roles, City city, Community community, House house, Date doa, UserAccount userAccount, String GenString){
+    Patient patient = new Patient(name,patientId, BloodType,BloodPressure,Name, PersonId, UserRoles, roles, city, community, house, doa, userAccount, GenString);
     directory.add(patient);
     return patient;
     }
+    
+    public Patient authenticateUser(String username, String password){
+    for (Patient patient : directory)
+        if (patient.getUseraccount().getUsername().equals(username) && patient.getUseraccount().getPassword().equals(password)){
+            return patient;
+        }
+    return null;
+    }
+    
+    
+    public Patient getPatient(Patient patient) {
 
+    Patient patientLocal = null;
+
+    for(Patient pat : directory){
+        if(pat.equals(patient))
+            patientLocal =  pat;
+    }
+
+     return patientLocal;
+    }
+
+    public void deletePatient(Patient patient){
+
+    ListIterator<Patient> var = directory.listIterator();
+
+    while (var.hasNext()) {
+
+        if (var.next().equals(patient)){
+          var.remove();
+        }
+    }
+
+    }
         
 }

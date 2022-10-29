@@ -4,29 +4,46 @@
  */
 package com.abhi.mycompany.hospitalmodel.models;
 
+import com.abhi.mycompany.hospitalmodel.roles.Roles;
+import com.abhi.mycompany.hospitalmodel.userAccount.UserAccount;
+import java.util.ArrayList;
+import java.util.Date;
+
 /**
  *
  * @author abhilashgp
  */
-public class Doctor{
+public class Doctor extends Person{
     
-    private String name;
+    private String doctorName;
     private int docId;
-    private Person person;
+    private String Department;
+    private Hospital hospital;
+    private ArrayList<Patient> patientDir= new ArrayList<>();
 
-    public Doctor(String name, int docId, Person person) {
-        this.name = name;
+    public Doctor(String doctorName, int docId, String Department, String Name, int PersonId, String UserRoles, Roles roles, City city, Community community, House house, Date doa, UserAccount useraccount, String Gender) {
+        super(Name, PersonId, UserRoles, roles, city, community, house, doa, useraccount, Gender);
+        this.doctorName = doctorName;
         this.docId = docId;
-        this.person = person;
+        this.Department = Department;
+    }
+
+    public Hospital getHospital() {
+        return hospital;
+    }
+
+    public void setHospital(Hospital hospital) {
+        this.hospital = hospital;
     }
     
+    
 
-    public String getName() {
-        return name;
+    public String getDoctorName() {
+        return doctorName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
     }
 
     public int getDocId() {
@@ -37,17 +54,17 @@ public class Doctor{
         this.docId = docId;
     }
 
-    public Person getPerson() {
-        return person;
+    public String getDepartment() {
+        return Department;
     }
 
-    public void setPerson(Person person) {
-        this.person = person;
+    public void setDepartment(String Department) {
+        this.Department = Department;
     }
 
     @Override
     public String toString() {
-        return "Doctor{" + "name=" + name + ", docId=" + docId + ", person=" + person + '}';
+        return "Doctor{" + "doctorName=" + doctorName + ", docId=" + docId + ", Department=" + Department + '}';
     }
-            
+        
 }
