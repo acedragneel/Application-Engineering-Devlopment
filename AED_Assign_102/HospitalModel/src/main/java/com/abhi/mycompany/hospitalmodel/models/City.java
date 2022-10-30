@@ -5,6 +5,7 @@
 package com.abhi.mycompany.hospitalmodel.models;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  *
@@ -14,16 +15,14 @@ public class City {
     
     private String States;
     private String Cities;
-    private ArrayList<Community> commDirectory = new ArrayList<>();
     private Community community;
     
-    public City(String Name, String Cities, Community community) {
-        this.States = Name;
+    public City(String States, String Cities, Community community) {
+        this.States = States;
         this.Cities = Cities;
-        this.commDirectory.add(community);
         this.community = community;
     }
-
+    
     public String getCities() {
         return Cities;
     }
@@ -40,28 +39,48 @@ public class City {
         this.States = Name;
     }
 
-    public ArrayList<Community> getCommDirectory() {
-        return commDirectory;
-    }
-
-    public void setCommDirectory(ArrayList<Community> commDirectory) {
-        this.commDirectory = commDirectory;
-    }
-    
-    public Community getCommunity(){
+    public Community getCommunity() {
         return community;
     }
-    
-    public Community addNewCommunity(int zipcode, String address, House house){
-        Community community = new Community(zipcode,address,house);
-        commDirectory.add(community);
-        return community;
-        
-    }
 
+    public void setCommunity(Community community) {
+        this.community = community;
+    }
+   
     @Override
     public String toString() {
         return "City{" + "States=" + States + ", Cities=" + Cities + '}';
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 79 * hash + Objects.hashCode(this.States);
+        hash = 79 * hash + Objects.hashCode(this.Cities);
+        hash = 79 * hash + Objects.hashCode(this.community);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final City other = (City) obj;
+        if (!Objects.equals(this.States, other.States)) {
+            return false;
+        }
+        if (!Objects.equals(this.Cities, other.Cities)) {
+            return false;
+        }
+        return Objects.equals(this.community, other.community);
+    }
+    
        
 }

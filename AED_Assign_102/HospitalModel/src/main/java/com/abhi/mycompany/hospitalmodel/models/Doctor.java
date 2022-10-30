@@ -21,6 +21,16 @@ public class Doctor extends Person{
     private Hospital hospital;
     private ArrayList<Patient> patientDir= new ArrayList<>();
 
+    public Doctor() {
+    }
+
+    public Doctor(String doctorName, int docId, String Department, Hospital hospital) {
+        this.doctorName = doctorName;
+        this.docId = docId;
+        this.Department = Department;
+        this.hospital = hospital;
+    }
+
     public Doctor(String doctorName, int docId, String Department, String Name, int PersonId, String UserRoles, Roles roles, City city, Community community, House house, Date doa, UserAccount useraccount, String Gender) {
         super(Name, PersonId, UserRoles, roles, city, community, house, doa, useraccount, Gender);
         this.doctorName = doctorName;

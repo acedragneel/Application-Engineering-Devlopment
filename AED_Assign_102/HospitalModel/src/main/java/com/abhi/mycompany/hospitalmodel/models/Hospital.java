@@ -15,6 +15,11 @@ public class Hospital {
     private String Name;
     private int hospitalId;
 
+    public Hospital() {
+    }
+    
+    
+
     public Hospital(String Name, int hospitalId) {
         this.Name = Name;
         this.hospitalId = hospitalId;

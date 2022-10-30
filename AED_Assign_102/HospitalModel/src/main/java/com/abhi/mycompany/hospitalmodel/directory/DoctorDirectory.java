@@ -34,6 +34,14 @@ public class DoctorDirectory {
         this.directory = directory;
     }
     
+    public Doctor authenticateUser(String username, String password){
+    for (Doctor doctor : directory)
+        if (doctor.getUseraccount().getUsername().equals(username) && doctor.getUseraccount().getPassword().equals(password)){
+            return doctor;
+        }
+    return null;
+    }
+    
     public Doctor addNewDoctor(String docName,int doctorId,String department, String Name, int PersonId, String UserRoles, Roles roles, City city, Community community, House house, Date doa, UserAccount userAccount, String GenString){
     Doctor doctor = new Doctor(docName,doctorId,department, Name, PersonId, UserRoles, roles, city, community, house, doa, userAccount, GenString);
     directory.add(doctor);

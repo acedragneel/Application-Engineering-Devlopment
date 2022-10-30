@@ -11,7 +11,7 @@ package com.abhi.mycompany.hospitalmodel.models;
 public class VitalSigns {
     
     private int heartRate;
-    private int bloodPressure;
+    private int weight;
 
     public int getHeartRate() {
         return heartRate;
@@ -21,17 +21,17 @@ public class VitalSigns {
         this.heartRate = heartRate;
     }
 
-    public int getBloodPressure() {
-        return bloodPressure;
+    public int getWeight() {
+        return weight;
     }
 
-    public void setBloodPressure(int bloodPressure) {
-        this.bloodPressure = bloodPressure;
+    public void setWeight(int weight) {
+        this.weight = weight;
     }
 
     @Override
     public String toString() {
-        return "VitalSigns{" + "heartRate=" + heartRate + ", bloodPressure=" + bloodPressure + '}';
+        return "VitalSigns{" + "heartRate=" + heartRate + ", bloodPressure=" + weight + '}';
     }
     
     

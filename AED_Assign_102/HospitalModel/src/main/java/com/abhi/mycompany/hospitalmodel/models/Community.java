@@ -5,6 +5,7 @@
 package com.abhi.mycompany.hospitalmodel.models;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  *
@@ -15,12 +16,20 @@ public class Community {
     private String CommunityName;
     private int zipCode;
     private String Address;
-    private ArrayList<House> housesDirectory = new ArrayList<>();
+    private House house;
 
     public Community(int zipCode, String Address, House house) {
         this.zipCode = zipCode;
         this.Address = Address;
-        this.housesDirectory.add(house);
+        this.house = house;
+    }
+
+    public House getHouse() {
+        return house;
+    }
+
+    public void setHouse(House house) {
+        this.house = house;
     }
 
     public int getZipCode() {
@@ -39,14 +48,6 @@ public class Community {
         this.Address = Address;
     }
 
-    public ArrayList<House> getHousesDirectory() {
-        return housesDirectory;
-    }
-
-    public void setHousesDirectory(ArrayList<House> housesDirectory) {
-        this.housesDirectory = housesDirectory;
-    }
-
     public String getCommunityName() {
         return CommunityName;
     }
@@ -57,7 +58,6 @@ public class Community {
       
     public House addNewHouse(String houseName){
         House house = new House(houseName);
-        housesDirectory.add(house);
         return house;
     }
 
@@ -65,6 +65,40 @@ public class Community {
     public String toString() {
         return "Community{" + "zipCode=" + zipCode + ", Address=" + Address + '}';
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 41 * hash + Objects.hashCode(this.CommunityName);
+        hash = 41 * hash + this.zipCode;
+        hash = 41 * hash + Objects.hashCode(this.Address);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Community other = (Community) obj;
+        if (this.zipCode != other.zipCode) {
+            return false;
+        }
+        if (!Objects.equals(this.CommunityName, other.CommunityName)) {
+            return false;
+        }
+        return Objects.equals(this.Address, other.Address);
+    }
+
+
+    
+    
        
    
 }

@@ -7,6 +7,7 @@ package com.abhi.mycompany.hospitalmodel.directory;
 import com.abhi.mycompany.hospitalmodel.models.City;
 import com.abhi.mycompany.hospitalmodel.models.Community;
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 /**
  *
@@ -32,6 +33,30 @@ public class CityDirectory {
         City city = new City(states,cities, community);
         cityDirectory.add(city);
         return city;
+    }
+    
+    public void deleteCityAccount(City city){
+        
+        ListIterator<City> var = cityDirectory.listIterator();
+
+        while (var.hasNext()) {
+
+            if (var.next().equals(city)){
+              var.remove();
+            }
+        }
+    }
+    
+    public City getCityAccount(City city) {
+
+        City cityAccountLocal = null;
+
+        for(City ci : cityDirectory){
+            if(ci.equals(city))
+                cityAccountLocal =  city;
+        }
+
+         return cityAccountLocal;
     }
     
 }

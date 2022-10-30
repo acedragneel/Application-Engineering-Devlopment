@@ -12,6 +12,7 @@ import com.abhi.mycompany.hospitalmodel.roles.Roles;
 import com.abhi.mycompany.hospitalmodel.userAccount.UserAccount;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.ListIterator;
 
 /**
  *
@@ -46,6 +47,30 @@ public class PersonDirectory {
         personDirectory.add(person);
         return person;
     } 
+    
+    public void deletePersonAccount(Person person){
+        
+        ListIterator<Person> var = personDirectory.listIterator();
+
+        while (var.hasNext()) {
+
+            if (var.next().equals(person)){
+              var.remove();
+            }
+        }
+    }
+    
+    public Person getPersonAccount(Person person) {
+
+        Person personAccountLocal = null;
+
+        for(Person per : personDirectory){
+            if(per.equals(person))
+                personAccountLocal =  per;
+        }
+
+         return personAccountLocal;
+    }
 
     @Override
     public String toString() {

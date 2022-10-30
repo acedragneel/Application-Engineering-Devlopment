@@ -6,6 +6,7 @@ package com.abhi.mycompany.hospitalmodel.directory;
 
 import com.abhi.mycompany.hospitalmodel.models.Hospital;
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 /**
  *
@@ -15,7 +16,7 @@ public class HospitalDirectory {
     
     ArrayList<Hospital> directory;
 
-    public HospitalDirectory(ArrayList<Hospital> hospital) {
+    public HospitalDirectory() {
         this.directory = new ArrayList<>();
     }
 
@@ -31,6 +32,31 @@ public class HospitalDirectory {
         Hospital hospital = new Hospital(name,hospitalId);
         directory.add(hospital);
         return hospital;
+    }
+    
+    public Hospital getHospitalF(Hospital hospital) {
+
+    Hospital HospitalLocal = null;
+
+    for(Hospital pat : directory){
+        if(pat.equals(hospital))
+            HospitalLocal =  pat;
+    }
+
+     return HospitalLocal;
+    }
+
+    public void deleteHospitalF(Hospital hospital){
+
+    ListIterator<Hospital> var = directory.listIterator();
+
+    while (var.hasNext()) {
+
+        if (var.next().equals(hospital)){
+          var.remove();
+        }
+    }
+
     }
     
 }

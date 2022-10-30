@@ -7,6 +7,7 @@ package com.abhi.mycompany.hospitalmodel.models;
 import com.abhi.mycompany.hospitalmodel.roles.Roles;
 import com.abhi.mycompany.hospitalmodel.userAccount.UserAccount;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  *
@@ -24,6 +25,9 @@ public class Person {
     private Date doa;
     private UserAccount useraccount;
     private String Gender;
+
+    public Person() {
+    }
 
     public Person(String Name, int PersonId, String UserRoles, Roles roles, City city, Community community, House house, Date doa, UserAccount useraccount, String Gender) {
         this.Name = Name;
@@ -117,6 +121,66 @@ public class Person {
     public void setUseraccount(UserAccount useraccount) {
         this.useraccount = useraccount;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 71 * hash + Objects.hashCode(this.Name);
+        hash = 71 * hash + this.PersonId;
+        hash = 71 * hash + Objects.hashCode(this.UserRoles);
+        hash = 71 * hash + Objects.hashCode(this.roles);
+        hash = 71 * hash + Objects.hashCode(this.city);
+        hash = 71 * hash + Objects.hashCode(this.community);
+        hash = 71 * hash + Objects.hashCode(this.house);
+        hash = 71 * hash + Objects.hashCode(this.doa);
+        hash = 71 * hash + Objects.hashCode(this.useraccount);
+        hash = 71 * hash + Objects.hashCode(this.Gender);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Person other = (Person) obj;
+        if (this.PersonId != other.PersonId) {
+            return false;
+        }
+        if (!Objects.equals(this.Name, other.Name)) {
+            return false;
+        }
+        if (!Objects.equals(this.UserRoles, other.UserRoles)) {
+            return false;
+        }
+        if (!Objects.equals(this.Gender, other.Gender)) {
+            return false;
+        }
+        if (!Objects.equals(this.roles, other.roles)) {
+            return false;
+        }
+        if (!Objects.equals(this.city, other.city)) {
+            return false;
+        }
+        if (!Objects.equals(this.community, other.community)) {
+            return false;
+        }
+        if (!Objects.equals(this.house, other.house)) {
+            return false;
+        }
+        if (!Objects.equals(this.doa, other.doa)) {
+            return false;
+        }
+        return Objects.equals(this.useraccount, other.useraccount);
+    }
+    
+    
 
     @Override
     public String toString() {

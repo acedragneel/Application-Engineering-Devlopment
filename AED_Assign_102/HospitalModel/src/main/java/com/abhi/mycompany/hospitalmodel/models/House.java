@@ -4,6 +4,8 @@
  */
 package com.abhi.mycompany.hospitalmodel.models;
 
+import java.util.Objects;
+
 /**
  *
  * @author abhilashgp
@@ -26,8 +28,32 @@ public class House {
 
     @Override
     public String toString() {
-        return "House{" + "houseName=" + houseName + '}';
+        return houseName;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.houseName);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final House other = (House) obj;
+        return Objects.equals(this.houseName, other.houseName);
+    }
+    
+    
     
     
     
