@@ -19,6 +19,12 @@ public class Patient extends Person{
     private int patientId;
     private String BloodType;
     private String BloodPressure;
+    private Encounter encounter;
+
+    public Patient() {
+    }
+    
+    
 
     public Patient(String patientName, int patientId, String BloodType, String BloodPressure, String Name, int PersonId, String UserRoles, Roles roles, City city, Community community, House house, Date doa, UserAccount useraccount, String Gender) {
         super(Name, PersonId, UserRoles, roles, city, community, house, doa, useraccount, Gender);
@@ -28,7 +34,14 @@ public class Patient extends Person{
         this.BloodPressure = BloodPressure;
     }
 
- 
+    public Encounter getEncounter() {
+        return encounter;
+    }
+
+    public void setEncounter(Encounter encounter) {
+        this.encounter = encounter;
+    }
+
     public String getBloodType() {
         return BloodType;
     }
@@ -97,6 +110,8 @@ public class Patient extends Person{
 
     @Override
     public String toString() {
-        return "Patient{" + "patientName=" + patientName + ", patientId=" + patientId + ", BloodType=" + BloodType + ", BloodPressure=" + BloodPressure + super.toString() +'}';
-    }  
+        return "Patient{" + "patientName=" + patientName + ", patientId=" + patientId + ", BloodType=" + BloodType + ", BloodPressure=" + BloodPressure + ", encounter=" + encounter + '}';
+    }
+
+
 }

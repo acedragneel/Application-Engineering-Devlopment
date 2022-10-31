@@ -8,6 +8,7 @@ import com.abhi.mycompany.hospitalmodel.roles.Roles;
 import com.abhi.mycompany.hospitalmodel.userAccount.UserAccount;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  *
@@ -45,8 +46,30 @@ public class Doctor extends Person{
     public void setHospital(Hospital hospital) {
         this.hospital = hospital;
     }
+
+    public ArrayList<Patient> getPatientDir() {
+        return patientDir;
+    }
+
+    public void setPatientDir(ArrayList<Patient> patientDir) {
+        this.patientDir = patientDir;
+    }
     
+    public void addPatient(Patient patient){
+        patientDir.add(patient);
+    }
     
+    public Patient getPatient(Patient patient) {
+
+    Patient patientLocal = null;
+
+    for(Patient pat : patientDir){
+        if(pat.equals(patient))
+            patientLocal =  pat;
+    }
+
+     return patientLocal;
+    }
 
     public String getDoctorName() {
         return doctorName;
@@ -71,6 +94,46 @@ public class Doctor extends Person{
     public void setDepartment(String Department) {
         this.Department = Department;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 67 * hash + Objects.hashCode(this.doctorName);
+        hash = 67 * hash + this.docId;
+        hash = 67 * hash + Objects.hashCode(this.Department);
+        hash = 67 * hash + Objects.hashCode(this.hospital);
+        hash = 67 * hash + Objects.hashCode(this.patientDir);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Doctor other = (Doctor) obj;
+        if (this.docId != other.docId) {
+            return false;
+        }
+        if (!Objects.equals(this.doctorName, other.doctorName)) {
+            return false;
+        }
+        if (!Objects.equals(this.Department, other.Department)) {
+            return false;
+        }
+        if (!Objects.equals(this.hospital, other.hospital)) {
+            return false;
+        }
+        return Objects.equals(this.patientDir, other.patientDir);
+    }
+    
+    
 
     @Override
     public String toString() {

@@ -13,6 +13,7 @@ import com.abhi.mycompany.hospitalmodel.roles.Roles;
 import com.abhi.mycompany.hospitalmodel.userAccount.UserAccount;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.ListIterator;
 
 /**
  *
@@ -46,5 +47,30 @@ public class DoctorDirectory {
     Doctor doctor = new Doctor(docName,doctorId,department, Name, PersonId, UserRoles, roles, city, community, house, doa, userAccount, GenString);
     directory.add(doctor);
     return doctor;
+    }
+    
+    public Doctor getDoctor(Doctor doctor) {
+
+    Doctor patientLocal = null;
+
+    for(Doctor pat : directory){
+        if(pat.equals(doctor))
+            patientLocal =  pat;
+    }
+
+     return patientLocal;
+    }
+
+    public void deleteDoctor(Doctor doctor){
+
+    ListIterator<Doctor> var = directory.listIterator();
+
+    while (var.hasNext()) {
+
+        if (var.next().equals(doctor)){
+          var.remove();
+        }
+    }
+
     }
 }

@@ -8,6 +8,7 @@ import com.abhi.mycompany.hospitalmodel.models.Encounter;
 import com.abhi.mycompany.hospitalmodel.models.VitalSigns;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 /**
  *
@@ -17,7 +18,7 @@ public class EncounterDirectory {
     
     ArrayList<Encounter> directory;
 
-    public EncounterDirectory(ArrayList<Encounter> directory) {
+    public EncounterDirectory() {
         this.directory = new ArrayList<>();
     }
 
@@ -29,9 +30,35 @@ public class EncounterDirectory {
         this.directory = directory;
     }
     
-    public Encounter addNewEncounter(Timestamp timestamp,VitalSigns vitalSigns){
-    Encounter encounter = new Encounter(timestamp,vitalSigns);
+    public Encounter addNewEncounter(Timestamp timestamp){
+    Encounter encounter = new Encounter(timestamp);
     directory.add(encounter);
     return encounter;
     }
+    
+    public void deleteCityAccount(Encounter encounter){
+        
+        ListIterator<Encounter> var = directory.listIterator();
+
+        while (var.hasNext()) {
+
+            if (var.next().equals(encounter)){
+              var.remove();
+            }
+        }
+    }
+    
+    public Encounter getCityAccount(Encounter encounter) {
+
+        Encounter encounterAccountLocal = null;
+
+        for(Encounter ci : directory){
+            if(ci.equals(encounter))
+                encounterAccountLocal =  encounter;
+        }
+
+         return encounterAccountLocal;
+    }
+    
+    
 }

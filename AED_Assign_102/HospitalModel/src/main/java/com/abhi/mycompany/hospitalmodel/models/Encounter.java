@@ -10,16 +10,10 @@ import java.sql.Timestamp;
  *
  * @author abhilashgp
  */
-public class Encounter {
+public class Encounter extends VitalSigns{
     
     Timestamp instant;
-    VitalSigns vitalSigns;
 
-    public Encounter(Timestamp instant, VitalSigns vitalSigns) {
-        this.instant = instant;
-        this.vitalSigns = vitalSigns;
-    }
-       
     public Encounter(Timestamp instant) {
         this.instant = instant;
     }
@@ -32,18 +26,8 @@ public class Encounter {
         this.instant = instant;
     }
 
-    public VitalSigns getVitalSigns() {
-        return vitalSigns;
-    }
-
-    public void setVitalSigns(VitalSigns vitalSigns) {
-        this.vitalSigns = vitalSigns;
-    }
-
     @Override
     public String toString() {
-        return "Encounter{" + "instant=" + instant + ", vitalSigns=" + vitalSigns + '}';
-    }
-    
-    
+        return "Encounter{" + "instant=" + instant + '}';
+    }    
 }
