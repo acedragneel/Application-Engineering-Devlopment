@@ -1780,7 +1780,6 @@ public class LoginFrame extends javax.swing.JFrame {
                         Parent.revalidate();
                          Doctor doctor = doctorDirectory.authenticateUser(userName.getText(), password.getText());
                         if(doctor != null){
-                            dName.setText(doctor.getName());
                             populateHospitalTable(dHosTableDetails);
                         }                            
                }
@@ -1998,6 +1997,8 @@ public class LoginFrame extends javax.swing.JFrame {
         Parent.add(loginPanel);
         Parent.repaint();
         Parent.revalidate(); 
+        
+                          resetPatient();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void pUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pUpdateActionPerformed
@@ -2032,6 +2033,8 @@ public class LoginFrame extends javax.swing.JFrame {
         Parent.add(loginPanel);
         Parent.repaint();
         Parent.revalidate(); 
+        
+        resetDoctor();
     }//GEN-LAST:event_dBackActionPerformed
 
     private void roleRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roleRegisterActionPerformed
@@ -2073,12 +2076,15 @@ public class LoginFrame extends javax.swing.JFrame {
                 pBloodPressure.setText(patient.getBloodPressure());
                 Date date = patient.getDoa();
                 pDob.setDate(date);
-                String heartRate = String.valueOf(patient.getEncounter().getHeartRate());
-                String Weight = String.valueOf(patient.getEncounter().getHeartRate());
-                String TimeString = String.valueOf(patient.getEncounter().getHeartRate());
-                lHeartRate1.setText(heartRate);
-                lWeight1.setText(Weight);
-                lTimeStamp1.setText(TimeString);
+                if(patient.getEncounter()!= null){
+                    String heartRate = String.valueOf(patient.getEncounter().getHeartRate());
+                    String Weight = String.valueOf(patient.getEncounter().getWeight());
+                    String TimeString = String.valueOf(patient.getEncounter().getInstant());
+                    lHeartRate1.setText(heartRate);
+                    lWeight1.setText(Weight);
+                    lTimeStamp1.setText(TimeString);
+                }
+                
             }
     }//GEN-LAST:event_pViewActionPerformed
 
