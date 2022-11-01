@@ -270,8 +270,10 @@ public class LoginFrame extends javax.swing.JFrame {
         lPatitentTableDetails = new javax.swing.JTable();
         lTimeStamp = new javax.swing.JTextField();
         jButton8 = new javax.swing.JButton();
+        jLabel65 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(900, 600));
         setSize(new java.awt.Dimension(900, 600));
 
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
@@ -351,7 +353,7 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel7.setText("jLabel7");
         jLabel7.setPreferredSize(new java.awt.Dimension(900, 600));
         loginPanel.add(jLabel7);
-        jLabel7.setBounds(0, 0, 1170, 750);
+        jLabel7.setBounds(0, 0, 1280, 870);
 
         Parent.add(loginPanel, "card2");
 
@@ -648,7 +650,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
         jLabel24.setIcon(new javax.swing.ImageIcon("F:\\NorthEastern Classes\\AED\\AED_Assign_101\\GowdruPalakshappa_Abhilash_002764845\\AED_Assign_102\\HospitalModel\\images\\white-wallpapers-37.jpg")); // NOI18N
         jLabel24.setPreferredSize(new java.awt.Dimension(900, 600));
-        registerPanel.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 1, 1030, 640));
+        registerPanel.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 1, 1380, 850));
 
         Parent.add(registerPanel, "card5");
 
@@ -931,7 +933,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
         jLabel62.setIcon(new javax.swing.ImageIcon("F:\\NorthEastern Classes\\AED\\AED_Assign_101\\GowdruPalakshappa_Abhilash_002764845\\AED_Assign_102\\HospitalModel\\images\\white-wallpapers-37.jpg")); // NOI18N
         jLabel62.setText("jLabel62");
-        ViewPerson.add(jLabel62, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 1, 1260, 840));
+        ViewPerson.add(jLabel62, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 1, 1370, 840));
 
         Parent.add(ViewPerson, "card8");
 
@@ -1114,7 +1116,7 @@ public class LoginFrame extends javax.swing.JFrame {
         );
         HospitalLayout.setVerticalGroup(
             HospitalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 601, Short.MAX_VALUE)
+            .addComponent(jSplitPane3)
         );
 
         Parent.add(Hospital, "card10");
@@ -1219,7 +1221,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
         jLabel63.setIcon(new javax.swing.ImageIcon("F:\\NorthEastern Classes\\AED\\AED_Assign_101\\GowdruPalakshappa_Abhilash_002764845\\AED_Assign_102\\HospitalModel\\images\\white-wallpapers-37.jpg")); // NOI18N
         jLabel63.setText("jLabel63");
-        ViewDoctor.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 1, 1140, 740));
+        ViewDoctor.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 1, 1310, 860));
 
         Parent.add(ViewDoctor, "card11");
 
@@ -1320,17 +1322,21 @@ public class LoginFrame extends javax.swing.JFrame {
 
         jLabel64.setIcon(new javax.swing.ImageIcon("F:\\NorthEastern Classes\\AED\\AED_Assign_101\\GowdruPalakshappa_Abhilash_002764845\\AED_Assign_102\\HospitalModel\\images\\white-wallpapers-37.jpg")); // NOI18N
         jLabel64.setText("jLabel64");
-        ViewPatitent.add(jLabel64, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 1, 1000, 670));
+        ViewPatitent.add(jLabel64, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 1, 1350, 860));
 
         Parent.add(ViewPatitent, "card12");
 
         ListOfPaitents.setPreferredSize(new java.awt.Dimension(900, 600));
+        ListOfPaitents.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel58.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel58.setText("Heart Rate:");
+        ListOfPaitents.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 323, -1, -1));
+        ListOfPaitents.add(lHeartRate, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 319, 270, -1));
 
         jLabel59.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel59.setText("Weight:");
+        ListOfPaitents.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 371, -1, -1));
 
         pUpdate1.setBackground(new java.awt.Color(153, 153, 153));
         pUpdate1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -1340,9 +1346,12 @@ public class LoginFrame extends javax.swing.JFrame {
                 pUpdate1ActionPerformed(evt);
             }
         });
+        ListOfPaitents.add(pUpdate1, new org.netbeans.lib.awtextra.AbsoluteConstraints(251, 423, -1, -1));
+        ListOfPaitents.add(lWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 367, 268, -1));
 
         jLabel53.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel53.setText("TimeStamp:");
+        ListOfPaitents.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 371, -1, -1));
 
         lPatitentTableDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1370,7 +1379,10 @@ public class LoginFrame extends javax.swing.JFrame {
         });
         jScrollPane8.setViewportView(lPatitentTableDetails);
 
+        ListOfPaitents.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 17, 864, 258));
+
         lTimeStamp.setEditable(false);
+        ListOfPaitents.add(lTimeStamp, new org.netbeans.lib.awtextra.AbsoluteConstraints(589, 367, 246, -1));
 
         jButton8.setBackground(new java.awt.Color(153, 153, 153));
         jButton8.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -1380,58 +1392,11 @@ public class LoginFrame extends javax.swing.JFrame {
                 jButton8ActionPerformed(evt);
             }
         });
+        ListOfPaitents.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(745, 423, -1, -1));
 
-        javax.swing.GroupLayout ListOfPaitentsLayout = new javax.swing.GroupLayout(ListOfPaitents);
-        ListOfPaitents.setLayout(ListOfPaitentsLayout);
-        ListOfPaitentsLayout.setHorizontalGroup(
-            ListOfPaitentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ListOfPaitentsLayout.createSequentialGroup()
-                .addGroup(ListOfPaitentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ListOfPaitentsLayout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addGroup(ListOfPaitentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel59)
-                            .addComponent(jLabel58))
-                        .addGap(18, 18, 18)
-                        .addGroup(ListOfPaitentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lHeartRate, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(ListOfPaitentsLayout.createSequentialGroup()
-                                .addGroup(ListOfPaitentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(pUpdate1)
-                                    .addComponent(lWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(78, 78, 78)
-                                .addGroup(ListOfPaitentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(ListOfPaitentsLayout.createSequentialGroup()
-                                        .addComponent(jLabel53)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lTimeStamp, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jButton8)))))
-                    .addGroup(ListOfPaitentsLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 864, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(208, Short.MAX_VALUE))
-        );
-        ListOfPaitentsLayout.setVerticalGroup(
-            ListOfPaitentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ListOfPaitentsLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addGroup(ListOfPaitentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel58)
-                    .addComponent(lHeartRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addGroup(ListOfPaitentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lWeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel59)
-                    .addComponent(jLabel53)
-                    .addComponent(lTimeStamp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(ListOfPaitentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pUpdate1)
-                    .addComponent(jButton8))
-                .addContainerGap(189, Short.MAX_VALUE))
-        );
+        jLabel65.setIcon(new javax.swing.ImageIcon("F:\\NorthEastern Classes\\AED\\AED_Assign_101\\GowdruPalakshappa_Abhilash_002764845\\AED_Assign_102\\HospitalModel\\src\\main\\java\\com\\abhi\\mycompany\\hospitalmodel\\frame\\white-wallpapers-37.jpg")); // NOI18N
+        jLabel65.setText("jLabel65");
+        ListOfPaitents.add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 1, 1290, 840));
 
         Parent.add(ListOfPaitents, "card14");
 
@@ -1441,11 +1406,11 @@ public class LoginFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1256, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 902, Short.MAX_VALUE)
         );
 
         pack();
@@ -3030,6 +2995,7 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
