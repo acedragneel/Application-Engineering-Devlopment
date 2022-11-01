@@ -1832,15 +1832,24 @@ public class LoginFrame extends javax.swing.JFrame {
         Parent.add(ViewPerson);
         Parent.repaint();
         Parent.revalidate();
+        isPerson = true;
         populatePersonTable();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         // TODO add your handling code here:
-        Parent.removeAll();
-        Parent.add(rolesPanel);
-        Parent.repaint();
-        Parent.revalidate();
+        if(isPerson == false){
+                Parent.removeAll();
+                Parent.add(loginPanel);
+                Parent.repaint();
+                Parent.revalidate();
+        }else{
+                Parent.removeAll();
+                Parent.add(rolesPanel);
+                Parent.repaint();
+                Parent.revalidate();
+        }
+
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void rBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rBackActionPerformed
